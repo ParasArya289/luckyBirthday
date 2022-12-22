@@ -12,11 +12,14 @@ let LuckyBirthday = () => {
     for (let i = 0; i < numDob.length; i++) {
       sum += +numDob[i];
     }
-
-    if (sum % luckyNumber === 0) {
-      setOutput("Your birthdate is Lucky");
+    if (luckyNumber && dob) {
+      if (sum % luckyNumber === 0) {
+        setOutput("Your birthdate is Lucky");
+      } else {
+        setOutput("Your birthdate is not Lucky");
+      }
     } else {
-      setOutput("Your birthdate is not Lucky");
+      alert("Please provide DOB and your Lucky number");
     }
   };
 
@@ -27,7 +30,7 @@ let LuckyBirthday = () => {
         flexDirection: "column",
         width: "30%",
         margin: "auto",
-        padding: "1rem"
+        padding: "1rem",
       }}
     >
       <h1 style={{ color: "grey" }}>
@@ -39,7 +42,7 @@ let LuckyBirthday = () => {
           margin: "0.5rem",
           padding: "1rem",
           borderRadius: "1rem",
-          borderColor: "tomato"
+          borderColor: "tomato",
         }}
         type="date"
         onChange={(e) => SetDob(e.target.value)}
@@ -50,10 +53,11 @@ let LuckyBirthday = () => {
           margin: "0.5rem",
           padding: "1rem",
           borderRadius: "1rem",
-          borderColor: "tomato"
+          borderColor: "tomato",
         }}
         type="number"
         onChange={(e) => setLuckyNumber(e.target.value)}
+        placeholder="Lucky Number"
       />
       <button
         style={{
@@ -62,7 +66,7 @@ let LuckyBirthday = () => {
           padding: "1rem",
           borderRadius: "1rem",
           border: "none",
-          backgroundColor: "tomato"
+          backgroundColor: "tomato",
         }}
         onClick={checkLuckyBirthday}
       >
